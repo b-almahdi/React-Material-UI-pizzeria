@@ -50,7 +50,7 @@ class ProdcutList  extends React.Component  {
 
     const styles = theme => ({
       card: {
-          maxWidth: 300,
+          maxWidth: 200,
       },
       media: {
           height: 0,
@@ -67,18 +67,21 @@ class ProdcutList  extends React.Component  {
           marginLeft: 30
       }
     });
-  return (
-    <Grid item xs={3} className={styles.grid}>
-                <Card className={styles.card}>
+  return (<>
+  
+    <Grid item xs={2} style={{marginTop: 20,
+          marginLeft: 30}}  >
+                <Card className={styles.card} style={{maxHeight:400,minHeight:400,maxWidth: 200}}  >
                     <CardMedia
                     className={styles.media}
+                    style={{minHeight:200,maxWidth: 200}}
                     component="img"
 
                      image={this.props.item.imageUrl}
                     title='description goes..'
                     />
-                    <CardContent>
-                    <Typography gutterBottom variant="headline" component="h2">
+                    <CardContent style={{minHeight:150}}  >
+                    <Typography gutterBottom variant="headline" component="h3">
                         {this.props.item.nom}
                     </Typography>
                     <Typography component="p">
@@ -93,7 +96,7 @@ class ProdcutList  extends React.Component  {
                 </Card>
                
             </Grid>
-
+</>
   );
         }
 }
