@@ -4,7 +4,6 @@ import reduxSaga from 'redux-saga';
 import rootSaga from './sagas';
 
 const localStorageMiddleware = ({ getState }) => {
-  // <--- FOCUS HERE
   return (next) => (action) => {
     const result = next(action);
     localStorage.setItem("applicationState", JSON.stringify(getState()));
@@ -13,7 +12,6 @@ const localStorageMiddleware = ({ getState }) => {
 };
 
 const reHydrateStore = () => {
-  // <-- FOCUS HERE
 
   if (localStorage.getItem("applicationState") !== null) {
     return JSON.parse(localStorage.getItem("applicationState")); // re-hydrate the store
@@ -28,10 +26,10 @@ export const getStore = () => {
   const initialState = { 
     users: [],
     produits:[],
-    cart:[]
+    cart:[],
+    produit:{}
   };
   const reduxSagaMiddleware = reduxSaga();
-  
   const store = createStore(rootReducer, initialState,
   composeEnhancer(applyMiddleware(reduxSagaMiddleware)),
   reHydrateStore(),

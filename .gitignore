@@ -59,3 +59,10 @@ typings/
 
 # dotenv environment variables file
 .env
+
+
+.cache/
+dist/
+.DS_Store
+coverage/
+.vscode/

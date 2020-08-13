@@ -80,9 +80,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export  function NavBar(props) {
+export function NavBar(props) {
 
-    
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -194,7 +194,7 @@ export  function NavBar(props) {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <Link to="/cart"  style={{ color: '#FFF' }}><IconButton aria-label="show 4 new mails" color="inherit">
+                        <Link to="/cart" style={{ color: '#FFF' }}><IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={props.cart.reduce((totalItems, cartItem) => totalItems + Number(cartItem.quantity), 0)} color="secondary">
                                 <ShoppingCartIcon />
                             </Badge>
@@ -235,5 +235,5 @@ export  function NavBar(props) {
     );
 }
 
-  
-  export default NavBar;
+
+export default NavBar;
