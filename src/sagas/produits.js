@@ -65,7 +65,6 @@ function* workerGetProduitsParPrix() {
   }
 }
 
-
 function* workerPostProduit(action) {
   console.log("Adding a produit");
   console.log(action.value);
@@ -93,6 +92,7 @@ function* workerPutProduit(action) {
 
 function* workerDeleteProduit(action) {
   console.log("Deleting a produit");
+  console.log(action.value);
   try {
     const uri = `http://localhost:8080/produits/${action.value}`;
     const result = yield call(Axios.delete, uri);

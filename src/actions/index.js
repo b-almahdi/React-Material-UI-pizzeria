@@ -13,9 +13,9 @@ export const GET_PRODUIT_BY_ID_FAILED = "getProduitsByIdFailed";
 export const GET_PRODUITS_PAR_PRIX = "getProduitsParPrix";
 export const SET_PRODUITS = "setProduits";
 export const SET_PRODUIT = "setProduit";
+export const POST_PRODUIT = "postProduit";
 export const SET_PRODUIT_BY_ID = "setProduitById";
 
-export const POST_PRODUIT = "postProduit";
 export const PUT_PRODUIT = "putProduit";
 export const DELETE_PRODUIT = "deleteProduit";
 export const EDIT_PRODUIT = "editProduit";
