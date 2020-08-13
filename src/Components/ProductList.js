@@ -10,6 +10,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import IconButton from "@material-ui/core/IconButton";
 import { connect } from "react-redux";
 import { GET_PRODUITS } from "../actions";
+import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
   card: {
@@ -69,34 +70,38 @@ class ProdcutList extends React.Component {
     return (
       <>
         <Grid item xs={2} style={{ marginTop: 20, marginLeft: 30 }}>
-          <Card
-            className={styles.card}
-            style={{ maxHeight: 400, minHeight: 400, maxWidth: 200 }}
-          >
-            <CardMedia
-              className={styles.media}
-              style={{ minHeight: 200, maxWidth: 200 }}
-              component="img"
-              image={this.props.item.imageUrl}
-              title="description goes.."
-            />
-            <CardContent style={{ minHeight: 150 }}>
-              <Typography gutterBottom variant="headline" component="h3">
-                {this.props.item.nom}
-              </Typography>
-              <Typography component="p">{this.props.item.prix} Dhs</Typography>
-            </CardContent>
-            <CardActions>
-              <Button
-                size="small"
-                color="primary"
-                className={styles.button}
-                onClick={() => addToCart(item)}
-              >
-                Add to Cart
-              </Button>
-            </CardActions>
-          </Card>
+          <Link to={`/produit/${this.props.item.id}`}>
+            <Card
+              className={styles.card}
+              style={{ maxHeight: 400, minHeight: 400, maxWidth: 200 }}
+            >
+              <CardMedia
+                className={styles.media}
+                style={{ minHeight: 200, maxWidth: 200 }}
+                component="img"
+                image={this.props.item.imageUrl}
+                title="description goes.."
+              />
+              <CardContent style={{ minHeight: 150 }}>
+                <Typography gutterBottom variant="headline" component="h3">
+                  {this.props.item.nom}
+                </Typography>
+                <Typography component="p">
+                  {this.props.item.prix} Dhs
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  className={styles.button}
+                  onClick={() => addToCart(item)}
+                >
+                  Add to Cart
+                </Button>
+              </CardActions>
+            </Card>
+          </Link>
         </Grid>
       </>
     );

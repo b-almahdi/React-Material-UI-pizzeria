@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Paper from "@material-ui/core/Paper";
-import { Grid, Button, CircularProgress } from "@material-ui/core";
+import { Typography, Grid, Button, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
+import QuantityComponent from "./QuantityComponent";
 import { GET_PRODUIT_BY_ID, addToCart } from "./../actions";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,9 +59,17 @@ class ProductComponent extends React.Component {
               <img src={produit.imageUrl} width="100%" alt="" />
             </Grid>
             <Grid item xs={12} sm={7} md={9}>
-              <h1> {produit.nom} </h1>
-              <p>{produit.description}</p>
-              <p>{produit.prix}</p>
+              <h1> </h1>
+              <Typography variant="h3" gutterBottom>
+                {produit.nom}
+              </Typography>
+              <Typography variant="h2" gutterBottom>
+                {produit.description}
+              </Typography>
+              <Typography variant="h5" gutterBottom>
+                {produit.prix} Dhs
+              </Typography>
+              <QuantityComponent />
               {/* <QuantityInput
               className={classes.formControl}
               //getQuantity={(quantity) => setValues({ ...values, quantity })}
