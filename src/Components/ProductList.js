@@ -70,11 +70,11 @@ class ProdcutList extends React.Component {
     return (
       <>
         <Grid item xs={2} style={{ marginTop: 20, marginLeft: 30 }}>
-          <Link to={`/produit/${this.props.item.id}`}>
-            <Card
-              className={styles.card}
-              style={{ maxHeight: 400, minHeight: 400, maxWidth: 200 }}
-            >
+          <Card
+            className={styles.card}
+            style={{ maxHeight: 400, minHeight: 400, maxWidth: 200 }}
+          >
+            <Link to={`/produit/${this.props.item.id}`}>
               <CardMedia
                 className={styles.media}
                 style={{ minHeight: 200, maxWidth: 200 }}
@@ -90,18 +90,18 @@ class ProdcutList extends React.Component {
                   {this.props.item.prix} Dhs
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Button
-                  size="small"
-                  color="primary"
-                  className={styles.button}
-                  onClick={() => addToCart(item)}
-                >
-                  Add to Cart
-                </Button>
-              </CardActions>
-            </Card>
-          </Link>
+            </Link>
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                className={styles.button}
+                onClick={() => addToCart(item)}
+              >
+                Add to Cart
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
       </>
     );
