@@ -2,6 +2,7 @@ import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -227,6 +228,9 @@ export function NavBar(props) {
                             <MoreIcon />
                         </IconButton>
                     </div>
+                    <Link to="/SignUp">
+                        <Button variant="contained" color="primary"  >S'inscrire</Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}

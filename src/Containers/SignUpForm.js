@@ -1,72 +1,76 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { POST_USER } from "../actions";
 import * as yup from "yup";
 
-const useStyles = makeStyles((theme) => ({
+const styles = ({
   form: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+  butto: {
+    margin: 20
+  }
+});
 
 const validationSchema = yup.object({
-  Prenom: yup.string().required("First Name is required").max(20),
+  prenom: yup.string().required("First Name is required").max(20),
   Nom: yup.string().required("Last Name is required").max(20),
-  email: yup.string().email("Invalid email").required("Email is required"),
+  username: yup.string().email("Invalid email").required("Email is required"),
   telephone: yup.string().required("Phone").max(20),
+  password: yup.string().required('Password is required')
 });
 class SignUpForm extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      Prenom: "",
+      prenom: "",
       Nom: "",
       username: "",
       telephone: "",
+      password: "",
       end_date: "",
       errors: {},
     };
   }
   // const classes = useStyles();
   render() {
+    const { classes } = this.props;
     return (
       <>
         <Formik
           initialValues={{
-            Prenom: "",
+            prenom: "",
             Nom: "",
             username: "",
             telephone: "",
+            password: ""
           }}
           onSubmit={(values) => {
             //   // setFormData(values);
             //   // nextStep();
-            // this.props.addUser(values);
+            this.props.addUser(values);
             console.log(values);
             alert("");
           }}
           validationSchema={validationSchema}
         >
           {({ errors, touched }) => (
-            <Form>
+            <Form className={classes.form}>
               <Field
-                name="Prenom"
+                name="prenom"
                 label="Prénom *"
                 margin="normal"
                 as={TextField}
-                error={touched.Prenom && errors.Prenom}
-                helperText={touched.Prenom && errors.Prenom}
+                error={touched.prenom && errors.prenom}
+                helperText={touched.prenom && errors.prenom}
               />
               <Field
                 name="Nom"
@@ -94,13 +98,22 @@ class SignUpForm extends React.Component {
                 error={touched.telephone && errors.telephone}
                 helperText={touched.telephone && errors.telephone}
               />
+              <Field
+                type="password"
+                name="password"
+                label="password *"
+                margin="normal"
+                as={TextField}
+                error={touched.password && errors.password}
+                helperText={touched.password && errors.password}
+              />
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                // className={classes.button}
+              // className={classes.button}
               >
-                Continue
+                Creer Votre Compte
               </Button>
             </Form>
           )}
@@ -117,5 +130,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
-export default connect(null, mapDispatchToProps)(SignUpForm);
+export default connect(null, mapDispatchToProps)(withStyles(styles)(SignUpForm));
